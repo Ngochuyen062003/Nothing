@@ -1,7 +1,9 @@
+@import url('https://use.fontawesome.com/releases/v6.4.2/css/all.css');
+
 ul{
     width: 200px;
     top: 200px;
-    left: 200px;
+    left: 40%;
     position: relative;
     transform: skewY(-15deg);
 }
