@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS Switcher - Sun & Moon</title>
+        <style>
+        @charset "UTF-8";
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+        }
+
+        .label {
+            --ball-size: 100px;
+            --padding: .1em;
+            --path: 250px;
+            --color-theme: #ddd;
+            --duration: .5s;
+            position: relative;
+            display: block;
+            width: calc(var(--path) + var(--padding) * 2);
+            font-size: var(--ball-size);
+            padding: var(--padding);
+            border-radius: calc(var(--ball-size) * 2);
+            background-image: url("night.gif");
+            cursor: pointer;
+            transition: var(--duration);
+            overflow: hidden;
+        }
+
+        .checkbox:checked ~ .label {
+            background-image: url("sky.gif");
+        }
+
+        .head {
+            position: relative;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            background-color: none;
+            transition: var(--duration);
+            overflow: hidden;
+        }
+
+        .checkbox:checked ~ .label .head {
+            transform: translateX(calc(var(--path) - 100%));
+        }
+
+        /* Hình ảnh mặt trời & mặt trăng */
+        .icon {
+            position: absolute;
+            width: 70%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .sun {
+            opacity: 0;
+        }
+
+        .moon {
+            opacity: 1;
+        }
+
+        .checkbox:checked ~ .label .sun {
+            opacity: 1;
+        }
+
+        .checkbox:checked ~ .label .moon {
+            opacity: 0;
+        }
+
+        .box {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sr-only {
+            position: fixed;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+    </head>
+    <body>
+        <h1 class="intro">CSS Switcher - Sun & Moon</h1>
+
+        <div class="box">
+            <input class="sr-only checkbox" type="checkbox" id="checkbox" />
+            <label class="label" for="checkbox">
+                <div class="head">
+                    <img class="icon sun" src="sun1.png" alt="Sun">
+                    <img class="icon moon" src="moon1.png" alt="Moon">
+                </div>
+            </label>
+        </div>
+
+    </body>
+</html>
